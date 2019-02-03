@@ -6,6 +6,7 @@ import { App } from '../../services/firebase';
 import addCurrentUser, { InjectedCurrentUserProps } from '../../hocs/addCurrentUser';
 import Input from '../../common/Input/Input';
 import Label from '../../common/Label';
+import { Cake, cakeServerResponseToCake, CakeServerResponse } from './cake.types';
 
 
 interface State {
@@ -15,20 +16,12 @@ interface State {
 
 interface ExternalProps {}
 interface FirebaseInjectedProps {
-	cakes: {[key: string]: Cake};
+	cakes: {[key: string]: CakeServerResponse};
 	removeCake: (key: string) => any;
-	addCake: (cake: Cake) => any;
+	addCake: (cake: CakeServerResponse) => any;
 }
 interface Props extends ExternalProps, FirebaseInjectedProps, InjectedCurrentUserProps {}
 
-export interface Cake {
-	title: string;
-	bakedBy: string;
-	creator?: string;
-}
-export interface CakeWithKey extends Cake {
-	key: string;
-}
 
 class CakeList extends React.Component<Props, State> {
 
@@ -64,7 +57,7 @@ class CakeList extends React.Component<Props, State> {
 		this.addCake();
 	}
 
-	renderCake = (cake: CakeWithKey) => (
+	renderCake = (cake: Cake) => (
 		<tr key={cake.key}>
 			<td>{cake.title}</td>
 			<td>{cake.bakedBy}</td>
@@ -91,7 +84,7 @@ class CakeList extends React.Component<Props, State> {
 						</tr>
 					</thead>
 					<tbody>
-						{objectToArray(this.props.cakes).map(this.renderCake)}
+						{cakeServerResponseToCake(this.props.cakes).map(this.renderCake)}
 						<tr>
 							<td>
 								<form onSubmit={this.handleSubmit}>
@@ -116,17 +109,9 @@ class CakeList extends React.Component<Props, State> {
 	}
 }
 
-const objectToArray = (object: {[key: string]: Cake}): CakeWithKey[] => {
-	if (object) {
-		return Object.entries(object)
-			.map(([ key, innerObject ]) => ({ ...innerObject, key }));
-	}
-	return [];
-};
-
 const mapFirebaseToProps = (props: Props, ref: any, firebase: App) => ({
 	cakes: `cakes`,
-	addCake: (cake: Cake) => ref(`cakes/`).push(cake),
+	addCake: (cake: CakeServerResponse) => ref(`cakes/`).push(cake),
 	removeCake: (key: string) => ref(`cakes/${key}`).remove(),
 });
 
