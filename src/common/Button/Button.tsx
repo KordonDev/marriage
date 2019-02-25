@@ -17,3 +17,7 @@ export const GhostButton = styled(Button)`
 		background-color: ${theme.colors.textColorLight};
 	}
 `;
+
+export const IconButton = styled(GhostButton)`
+	padding: 3px;
+`;
