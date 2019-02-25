@@ -9,6 +9,7 @@ import Input from '../../common/Input/Input';
 import Label from '../../common/Label';
 import Icon from '../../common/Icon';
 import { Cake, cakeServerResponseToCake, CakeServerResponse } from './cake.types';
+import { IconButton } from '../../common/Button';
 
 
 interface State {
@@ -73,88 +74,58 @@ class CakeList extends React.Component<Props, State> {
 		return (
 			<Container>
 				<Heading level={2}>Kuchenübersicht</Heading>
-				<table>
+				<Table>
 					<thead>
 						<tr>
-							<td>
-								<Label htmlFor="title">Kuchennamen</Label>
-							</td>
-							<td>
-								<Label htmlFor="bakedBy">Name</Label>
-							</td>
-							<td/>
+							<TableHead>Kuchen</TableHead>
+							<TableHead>Name</TableHead>
+							<TableHead/>
 						</tr>
 					</thead>
 					<tbody>
-						{cakeServerResponseToCake(this.props.cakes).map(this.renderCake)}
+						{cakeServerResponseToCake(this.props.cakes).map(this.renderCakeRow)}
 						<tr>
-							<td>
-								<form onSubmit={this.handleSubmit}>
-									<Input id="title" required placeholder="Was?" type="text" value={this.state.cake} onChange={this.updateCake} />
-								</form>
-							</td>
-							<td>
-								<form onSubmit={this.handleSubmit}>
-									<Input id="bakedBy" required placeholder="Wer?" type="text" value={this.state.bakedBy} onChange={this.updateBakedBy} />
-								</form>
-							</td>
-							<td>
-								<Button onClick={this.addCake} disabled={this.state.cake === '' || this.state.bakedBy === ''}>
-									Add
-								</Button>
-							</td>
+							<TableDataInput>
+								<Label htmlFor="name">
+									Wer:
+								</Label>
+								</TableDataInput>
+							<TableDataInput>
+									<Input placeholder="Max" type="text" id="bakedby" value={this.state.bakedBy} onChange={this.updateBakedBy} />
+							</TableDataInput>
+							<TableDataInput/>
+						</tr>
+						<tr>
+							<TableDataInput>
+								<Label htmlFor="name">
+									Kuchen:
+								</Label>
+							</TableDataInput>
+							<TableDataInput>
+									<Input placeholder="Apfelkuchen" type="text" id="name" value={this.state.cake} onChange={this.updateCake} />
+							</TableDataInput>
+							<TableDataInput>
+								<IconButton onClick={this.addCake}>
+									<Icon alt="add cake" name="plus" />
+								</IconButton>
+							</TableDataInput>
 						</tr>
 					</tbody>
-				</table>
-				{this.renderPrototypeOfTable()}
+				</Table>
 			</Container>
 		);
 	}
 
-	renderPrototypeOfTable = () => (
-		<div>
-			<Table>
-				<thead>
-					<tr>
-						<TableHead>Kuchen</TableHead>
-						<TableHead>Name</TableHead>
-						<TableHead/>
-					</tr>
-				</thead>
-				<tbody>
-
-					<tr>
-						<TableData>Pfirsich</TableData>
-						<TableData>Arne</TableData>
-						<TableData><Icon alt="remove cake" name="trash" /></TableData>
-					</tr>
-					<tr>
-						<TableData>Pfirsich</TableData>
-						<TableData>Arne</TableData>
-						<TableData><Icon alt="remove cake" name="trash" /></TableData>
-					</tr>
-					<tr>
-						<TableData>Pfirsich</TableData>
-						<TableData>Arne</TableData>
-						<TableData><Icon alt="remove cake" name="trash" /></TableData>
-					</tr>
-					<tr>
-						<TableDataInput>Name:</TableDataInput>
-						<TableDataInput>
-								<Input placeholder="Max" type="text" id="name" value={this.state.bakedBy} onChange={this.updateBakedBy} />
-						</TableDataInput>
-						<TableDataInput/>
-					</tr>
-					<tr>
-						<TableDataInput>Kuchen:</TableDataInput>
-						<TableDataInput>
-								<Input placeholder="Apfelkuchen" type="text" id="name" value={this.state.cake} onChange={this.updateCake} />
-						</TableDataInput>
-						<TableDataInput><Icon alt="add cake" name="plus" /></TableDataInput>
-					</tr>
-				</tbody>
-			</Table>
-		</div>
+	renderCakeRow = (cake: Cake) => (
+		<tr key={cake.key}>
+			<TableData>{cake.title}</TableData>
+			<TableData>{cake.bakedBy}</TableData>
+			<TableData>
+				<IconButton onClick={this.removeCake.bind(this, cake.key)}>
+					<Icon alt="remove cake" name="trash" />
+				</IconButton>
+			</TableData>
+		</tr>
 	)
 }
 
@@ -185,7 +156,6 @@ const TableData = styled.td`
 const TableDataInput = TableData.extend`
 	background-color: white;
 `;
-
 
 const mapFirebaseToProps = (props: Props, ref: any, firebase: App) => ({
 	cakes: `cakes`,
