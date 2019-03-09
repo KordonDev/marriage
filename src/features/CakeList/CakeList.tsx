@@ -85,24 +85,27 @@ class CakeList extends React.Component<Props, State> {
 					<tbody>
 						{cakeServerResponseToCake(this.props.cakes).map(this.renderCakeRow)}
 						<tr>
-							<TableDataInput>
-								<Label htmlFor="name">
-									Wer:
-								</Label>
-								</TableDataInput>
-							<TableDataInput>
-									<Input placeholder="Max" type="text" id="bakedby" value={this.state.bakedBy} onChange={this.updateBakedBy} />
-							</TableDataInput>
-							<TableDataInput/>
+							<TableData/>
+							<TableData/>
+							<TableData/>
 						</tr>
 						<tr>
 							<TableDataInput>
 								<Label htmlFor="name">
+									Wer:
+								</Label>
+								<br />
+								<Label htmlFor="name">
 									Kuchen:
 								</Label>
-							</TableDataInput>
+								</TableDataInput>
 							<TableDataInput>
-									<Input placeholder="Apfelkuchen" type="text" id="name" value={this.state.cake} onChange={this.updateCake} />
+								<form onSubmit={this.handleSubmit}>
+									<Input placeholder="Max" type="text" required id="bakedby" value={this.state.bakedBy} onChange={this.updateBakedBy} />
+									<br/>
+									<Input placeholder="Apfelkuchen" required type="text" id="name" value={this.state.cake} onChange={this.updateCake} />
+									<InvisibleButton type="submit"/>
+								</form>
 							</TableDataInput>
 							<TableDataInput>
 								<IconButton onClick={this.addCake}>
@@ -139,7 +142,7 @@ const Table = styled.table`
 		background-color: white;
 	}
 	tr:nth-child(even) {
-		background-color: grey;
+		background-color: #EBEBEB;
 	}
 `;
 
@@ -155,6 +158,10 @@ const TableData = styled.td`
 
 const TableDataInput = TableData.extend`
 	background-color: white;
+`;
+
+const InvisibleButton = Button.extend`
+	display: none;
 `;
 
 const mapFirebaseToProps = (props: Props, ref: any, firebase: App) => ({
