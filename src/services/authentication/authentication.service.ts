@@ -27,7 +27,7 @@ const onAuthStateChanged: Observable<User> = Observable.create((observer: any) =
 onAuthStateChanged.subscribe();
 
 const signIn = (loginCode: string) => {
-	return fetch(`http://localhost:8080/?loginCode=${loginCode}`)
+	return fetch(`https://us-central1-my-awesome-marriage.cloudfunctions.net/authenticationRequest?loginCode=${loginCode}`)
 		.then((res) => {
 			if (res.status >= 400) {
 				throw res;

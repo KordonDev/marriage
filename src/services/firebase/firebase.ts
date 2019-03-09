@@ -7,12 +7,12 @@ interface Database extends firebase.database.Database{}
 interface Auth extends firebase.auth.Auth{}
 
 const config = {
-	apiKey: 'AIzaSyD1h-noaQWGGGgt5U9dblVihVVFvtwOqTE',
-	authDomain: 'marriage-test.firebaseapp.com',
-	databaseURL: 'https://marriage-test.firebaseio.com',
-	projectId: 'marriage-test',
-	storageBucket: 'marriage-test.appspot.com',
-	messagingSenderId: '757149552794',
+	apiKey: 'AIzaSyB5xaUOWd9NHg5RUcjvdP4Ejvdus1qDnBU',
+	authDomain: 'my-awesome-marriage.firebaseapp.com',
+	databaseURL: 'https://my-awesome-marriage.firebaseio.com',
+	projectId: 'my-awesome-marriage',
+	storageBucket: 'my-awesome-marriage.appspot.com',
+	messagingSenderId: '706161234818',
 };
 
 const firebaseApp = firebase.initializeApp(config);
