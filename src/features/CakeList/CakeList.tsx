@@ -73,7 +73,7 @@ class CakeList extends React.Component<Props, State> {
 	render() {
 		return (
 			<Container>
-				<Heading level={2}>Kuchenübersicht</Heading>
+				<Heading mb={30} level={2}>Kuchenübersicht</Heading>
 				<Table>
 					<thead>
 						<tr>
@@ -90,19 +90,17 @@ class CakeList extends React.Component<Props, State> {
 							<TableData/>
 						</tr>
 						<tr>
-							<TableDataInput>
-								<Label htmlFor="name">
+							<TableDataLabel>
+								<LabelTabel htmlFor="name">
 									Wer:
-								</Label>
-								<br />
-								<Label htmlFor="name">
+								</LabelTabel>
+								<LabelTabel htmlFor="name">
 									Kuchen:
-								</Label>
-								</TableDataInput>
+								</LabelTabel>
+							</TableDataLabel>
 							<TableDataInput>
 								<form onSubmit={this.handleSubmit}>
 									<Input placeholder="Max" type="text" required id="bakedby" value={this.state.bakedBy} onChange={this.updateBakedBy} />
-									<br/>
 									<Input placeholder="Apfelkuchen" required type="text" id="name" value={this.state.cake} onChange={this.updateCake} />
 									<InvisibleButton type="submit"/>
 								</form>
@@ -124,9 +122,11 @@ class CakeList extends React.Component<Props, State> {
 			<TableData>{cake.title}</TableData>
 			<TableData>{cake.bakedBy}</TableData>
 			<TableData>
-				<IconButton onClick={this.removeCake.bind(this, cake.key)}>
-					<Icon alt="remove cake" name="trash" />
-				</IconButton>
+				{this.props.currentUser && this.props.currentUser.uid === cake.creator && (
+					<IconButton onClick={this.removeCake.bind(this, cake.key)}>
+						<Icon alt="remove cake" name="trash" />
+					</IconButton>
+				)}
 			</TableData>
 		</tr>
 	)
@@ -158,6 +158,15 @@ const TableData = styled.td`
 
 const TableDataInput = TableData.extend`
 	background-color: white;
+`;
+
+const TableDataLabel = TableDataInput.extend`
+	vertical-align: top;
+`;
+
+const LabelTabel = Label.extend`
+	display: block;
+	padding-bottom: 12px;
 `;
 
 const InvisibleButton = Button.extend`
