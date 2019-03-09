@@ -10,11 +10,13 @@ import Label from '../../common/Label';
 import Icon from '../../common/Icon';
 import { Cake, cakeServerResponseToCake, CakeServerResponse } from './cake.types';
 import { IconButton } from '../../common/Button';
+import LoadingSpinner from '../../common/LoadingSpinner';
 
 
 interface State {
 	cake: string;
 	bakedBy: string;
+	isLoading: boolean;
 }
 
 interface ExternalProps {}
@@ -33,7 +35,14 @@ class CakeList extends React.Component<Props, State> {
 		this.state = {
 			cake: '',
 			bakedBy: '',
+			isLoading: !props.cakes,
 		};
+	}
+
+	componentWillReceiveProps(nextProps: Props) {
+		if (this.props.cakes === undefined && nextProps.cakes !== undefined) {
+			this.setState({ isLoading: false });
+		}
 	}
 
 	updateCake = (cake: React.ChangeEvent<HTMLInputElement>) => this.setState({ cake: cake.target.value });
@@ -74,45 +83,48 @@ class CakeList extends React.Component<Props, State> {
 		return (
 			<Container>
 				<Heading mb={30} level={2}>Kuchenübersicht</Heading>
-				<Table>
-					<thead>
-						<tr>
-							<TableHead>Kuchen</TableHead>
-							<TableHead>Name</TableHead>
-							<TableHead/>
-						</tr>
-					</thead>
-					<tbody>
-						{cakeServerResponseToCake(this.props.cakes).map(this.renderCakeRow)}
-						<tr>
-							<TableData/>
-							<TableData/>
-							<TableData/>
-						</tr>
-						<tr>
-							<TableDataLabel>
-								<LabelTabel htmlFor="name">
-									Wer:
-								</LabelTabel>
-								<LabelTabel htmlFor="name">
-									Kuchen:
-								</LabelTabel>
-							</TableDataLabel>
-							<TableDataInput>
-								<form onSubmit={this.handleSubmit}>
-									<Input placeholder="Max" type="text" required id="bakedby" value={this.state.bakedBy} onChange={this.updateBakedBy} />
-									<Input placeholder="Apfelkuchen" required type="text" id="name" value={this.state.cake} onChange={this.updateCake} />
-									<InvisibleButton type="submit"/>
-								</form>
-							</TableDataInput>
-							<TableDataInput>
-								<IconButton onClick={this.addCake}>
-									<Icon alt="add cake" name="plus" />
-								</IconButton>
-							</TableDataInput>
-						</tr>
-					</tbody>
-				</Table>
+				{this.state.isLoading && <LoadingSpinner />}
+				{!this.state.isLoading && (
+					<Table>
+						<thead>
+							<tr>
+								<TableHead>Kuchen</TableHead>
+								<TableHead>Name</TableHead>
+								<TableHead/>
+							</tr>
+						</thead>
+						<tbody>
+							{cakeServerResponseToCake(this.props.cakes).map(this.renderCakeRow)}
+							<tr>
+								<TableData/>
+								<TableData/>
+								<TableData/>
+							</tr>
+							<tr>
+								<TableDataLabel>
+									<LabelTabel htmlFor="name">
+										Wer:
+									</LabelTabel>
+									<LabelTabel htmlFor="name">
+										Kuchen:
+									</LabelTabel>
+								</TableDataLabel>
+								<TableDataInput>
+									<form onSubmit={this.handleSubmit}>
+										<Input placeholder="Max" type="text" required id="bakedby" value={this.state.bakedBy} onChange={this.updateBakedBy} />
+										<Input placeholder="Apfelkuchen" required type="text" id="name" value={this.state.cake} onChange={this.updateCake} />
+										<InvisibleButton type="submit"/>
+									</form>
+								</TableDataInput>
+								<TableDataInput>
+									<IconButton onClick={this.addCake}>
+										<Icon alt="add cake" name="plus" />
+									</IconButton>
+								</TableDataInput>
+							</tr>
+						</tbody>
+					</Table>
+				)}
 			</Container>
 		);
 	}
@@ -179,7 +191,7 @@ const mapFirebaseToProps = (props: Props, ref: any, firebase: App) => ({
 	removeCake: (key: string) => ref(`cakes/${key}`).remove(),
 });
 
-export default addCurrentUser()(
+export default addCurrentUser<ExternalProps>()(
 	connect(
 		mapFirebaseToProps
 	)(CakeList)
