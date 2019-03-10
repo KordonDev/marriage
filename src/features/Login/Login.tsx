@@ -55,17 +55,14 @@ class Login extends React.Component<Props, State> {
 
 	render() {
 		return (
-			<div>
+			<Container>
+				<Flex column justify="center" align="center" wrap>
+					<Heading fontSize={[ '100px', '120px' ]}>Login</Heading>
+					{this.state.isLoggedIn && this.renderLogout()}
+					{!this.state.isLoggedIn && this.renderLogin()}
 
-				<Container>
-					<Flex column justify="center" align="center" wrap>
-						<Heading fontSize={[ '100px', '120px' ]}>Login</Heading>
-						{this.state.isLoggedIn && this.renderLogout()}
-						{!this.state.isLoggedIn && this.renderLogin()}
-
-					</Flex>
-				</Container>
-			</div>
+				</Flex>
+			</Container>
 		);
 	}
 

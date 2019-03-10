@@ -40,7 +40,7 @@ class Header extends React.Component<Props> {
 						{this.renderLink(urls.home)}
 						{this.renderLink(urls.party)}
 						{this.renderLink(urls.response)}
-						{this.renderLink(urls.cakeList)}
+						{this.renderLink(urls.support)}
 					</ContainerMaxHeight>
 				</FlexMaxHeight>
 			</div>

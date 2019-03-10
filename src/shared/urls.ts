@@ -18,9 +18,9 @@ export default {
 		displayName: 'Rückmeldung',
 		url: '/response',
 	},
-	cakeList: {
-		displayName: 'Kuchenliste',
-		url: '/cakeList',
+	support: {
+		displayName: 'Unterstützung',
+		url: '/support',
 	},
 	impressum: {
 		displayName: 'Impressum',

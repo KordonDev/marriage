@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Heading, Button, Container } from 'rebass';
+import { Button, Box } from 'rebass';
 import { connect } from 'react-firebase';
 
 import { App } from '../../services/firebase';
@@ -8,17 +8,19 @@ import Input from '../../common/Input/Input';
 import Icon from '../../common/Icon';
 import { Cake, cakeServerResponseToCake, CakeServerResponse } from './cake.types';
 import { IconButton } from '../../common/Button';
-import LoadingSpinner from '../../common/LoadingSpinner';
 import { Table, TableData, TableDataInput, TableDataLabel, TableHead, LabelTabel } from '../../common/Table';
 
 
 interface State {
 	cake: string;
 	bakedBy: string;
-	isLoading: boolean;
 }
 
-interface ExternalProps {}
+interface ExternalProps {
+	firebasePath: string;
+	isLoading: boolean;
+	setLoading: (isLoading: boolean) => void;
+}
 interface FirebaseInjectedProps {
 	cakes: {[key: string]: CakeServerResponse};
 	removeCake: (key: string) => any;
@@ -34,13 +36,12 @@ class CakeList extends React.Component<Props, State> {
 		this.state = {
 			cake: '',
 			bakedBy: '',
-			isLoading: !props.cakes,
 		};
 	}
 
 	componentWillReceiveProps(nextProps: Props) {
-		if (this.props.cakes === undefined && nextProps.cakes !== undefined) {
-			this.setState({ isLoading: false });
+		if (this.props.cakes !== nextProps.cakes) {
+			this.props.setLoading(nextProps.cakes === undefined);
 		}
 	}
 
@@ -80,15 +81,14 @@ class CakeList extends React.Component<Props, State> {
 
 	render() {
 		return (
-			<Container>
-				<Heading mb={30} level={2}>Kuchenübersicht</Heading>
-				{this.state.isLoading && <LoadingSpinner />}
-				{!this.state.isLoading && (
+			<div>
+				{this.props.isLoading && <Box mb="50px"/>}
+				{!this.props.isLoading && (
 					<Table>
 						<thead>
 							<tr>
-								<TableHead>Kuchen</TableHead>
 								<TableHead>Name</TableHead>
+								<TableHead>Kuchen</TableHead>
 								<TableHead/>
 							</tr>
 						</thead>
@@ -102,16 +102,16 @@ class CakeList extends React.Component<Props, State> {
 							<tr>
 								<TableDataLabel>
 									<LabelTabel htmlFor="name">
-										Kuchen:
+										Name:
 									</LabelTabel>
 									<LabelTabel htmlFor="name">
-										Name:
+										Kuchen:
 									</LabelTabel>
 								</TableDataLabel>
 								<TableDataInput>
 									<form onSubmit={this.handleSubmit}>
-										<Input placeholder="Apfelkuchen" required type="text" id="name" value={this.state.cake} onChange={this.updateCake} />
 										<Input placeholder="Max" type="text" required id="bakedby" value={this.state.bakedBy} onChange={this.updateBakedBy} />
+										<Input placeholder="Apfelkuchen" required type="text" id="name" value={this.state.cake} onChange={this.updateCake} />
 										<InvisibleButton type="submit"/>
 									</form>
 								</TableDataInput>
@@ -124,14 +124,14 @@ class CakeList extends React.Component<Props, State> {
 						</tbody>
 					</Table>
 				)}
-			</Container>
+			</div>
 		);
 	}
 
 	renderCakeRow = (cake: Cake) => (
 		<tr key={cake.key}>
-			<TableData>{cake.title}</TableData>
 			<TableData>{cake.bakedBy}</TableData>
+			<TableData>{cake.title}</TableData>
 			<TableData>
 				{this.props.currentUser && this.props.currentUser.uid === cake.creator && (
 					<IconButton onClick={this.removeCake.bind(this, cake.key)}>
@@ -149,9 +149,9 @@ const InvisibleButton = Button.extend`
 `;
 
 const mapFirebaseToProps = (props: Props, ref: any, firebase: App) => ({
-	cakes: `cakes`,
-	addCake: (cake: CakeServerResponse) => ref(`cakes/`).push(cake),
-	removeCake: (key: string) => ref(`cakes/${key}`).remove(),
+	cakes: props.firebasePath,
+	addCake: (cake: CakeServerResponse) => ref(`${props.firebasePath}/`).push(cake),
+	removeCake: (key: string) => ref(`${props.firebasePath}/${key}`).remove(),
 });
 
 export default addCurrentUser<ExternalProps>()(
