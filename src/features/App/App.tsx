@@ -12,7 +12,7 @@ import Impressum from '../Impressum';
 import Login from '../Login';
 import appStyles from './App.styles';
 import urls from '../../shared/urls';
-import CakeList from '../CakeList';
+import Support from '../Support';
 import Footer from './Footer';
 import Main from './Main';
 import { logout, isLoggedIn } from '../../services/authentication';
@@ -44,7 +44,7 @@ class App extends React.Component<Props> {
 						<Route exact path={urls.home.url} component={Home} />
 						<Route path={urls.response.url} component={Response} />
 						<Route path={urls.party.url} component={Party} />
-						<Route path={urls.cakeList.url} component={CakeList} />
+						<Route path={urls.support.url} component={Support} />
 						<Route path={urls.impressum.url} component={Impressum} />
 						<Route path={urls.login.rawUrl} component={Login} />
 						<Route component={Home} />
