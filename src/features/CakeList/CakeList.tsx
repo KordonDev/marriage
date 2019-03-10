@@ -1,16 +1,15 @@
 import * as React from 'react';
 import { Heading, Button, Container } from 'rebass';
 import { connect } from 'react-firebase';
-import styled from 'styled-components';
 
 import { App } from '../../services/firebase';
 import addCurrentUser, { InjectedCurrentUserProps } from '../../hocs/addCurrentUser';
 import Input from '../../common/Input/Input';
-import Label from '../../common/Label';
 import Icon from '../../common/Icon';
 import { Cake, cakeServerResponseToCake, CakeServerResponse } from './cake.types';
 import { IconButton } from '../../common/Button';
 import LoadingSpinner from '../../common/LoadingSpinner';
+import { Table, TableData, TableDataInput, TableDataLabel, TableHead, LabelTabel } from '../../common/Table';
 
 
 interface State {
@@ -103,16 +102,16 @@ class CakeList extends React.Component<Props, State> {
 							<tr>
 								<TableDataLabel>
 									<LabelTabel htmlFor="name">
-										Wer:
+										Kuchen:
 									</LabelTabel>
 									<LabelTabel htmlFor="name">
-										Kuchen:
+										Name:
 									</LabelTabel>
 								</TableDataLabel>
 								<TableDataInput>
 									<form onSubmit={this.handleSubmit}>
-										<Input placeholder="Max" type="text" required id="bakedby" value={this.state.bakedBy} onChange={this.updateBakedBy} />
 										<Input placeholder="Apfelkuchen" required type="text" id="name" value={this.state.cake} onChange={this.updateCake} />
+										<Input placeholder="Max" type="text" required id="bakedby" value={this.state.bakedBy} onChange={this.updateBakedBy} />
 										<InvisibleButton type="submit"/>
 									</form>
 								</TableDataInput>
@@ -144,42 +143,6 @@ class CakeList extends React.Component<Props, State> {
 	)
 }
 
-const Table = styled.table`
-	width: 100%;
-	text-align: left;
-	box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.5);
-	border-collapse: collapse;
-
-	tr:nth-child(odd) {
-		background-color: white;
-	}
-	tr:nth-child(even) {
-		background-color: #EBEBEB;
-	}
-`;
-
-const TableHead = styled.th`
-	padding: 12px 25px;
-	background-color: #363636;
-	color: white;
-`;
-
-const TableData = styled.td`
-	padding: 12px 25px;
-`;
-
-const TableDataInput = TableData.extend`
-	background-color: white;
-`;
-
-const TableDataLabel = TableDataInput.extend`
-	vertical-align: top;
-`;
-
-const LabelTabel = Label.extend`
-	display: block;
-	padding-bottom: 12px;
-`;
 
 const InvisibleButton = Button.extend`
 	display: none;
