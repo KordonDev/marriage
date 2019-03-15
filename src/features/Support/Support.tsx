@@ -29,7 +29,7 @@ class Support extends React.Component<Props, State> {
 			<Container>
 				<Heading mb={30} level={2}>Kuchenübersicht</Heading>
 
-				{this.state.churchLoading || this.state.dessertLoading && <LoadingSpinner />}
+				{(this.state.churchLoading || this.state.dessertLoading) && <LoadingSpinner />}
 				<div>
 					<Heading level={3}>Sektempfang</Heading>
 					<CakeList firebasePath="church/cakes" isLoading={this.state.churchLoading || this.state.dessertLoading} setLoading={this.setChurchLoading} />
