@@ -37,7 +37,7 @@ class Login extends React.Component<Props, State> {
 		this.loginSubscription = isLoggedIn.subscribe((isLoggedIn) => {
 			this.setState({ isLoggedIn }, () => {
 				if (isLoggedIn) {
-					this.props.history.push(urls.home.url);
+					this.props.history.replace(urls.home.url);
 				} else {
 					if (LoginCodePattern.test(this.state.loginCode)) {
 						signIn(this.state.loginCode);
