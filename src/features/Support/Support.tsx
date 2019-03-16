@@ -27,14 +27,23 @@ class Support extends React.Component<Props, State> {
 	render() {
 		return (
 			<Container>
-				<Heading mb={30} level={2}>Kuchenübersicht</Heading>
+				<Heading mb={30} level={2}>Eure Beiträge</Heading>
 
 				{(this.state.churchLoading || this.state.dessertLoading) && <LoadingSpinner />}
 				<div>
 					<Heading level={3}>Sektempfang</Heading>
+					<p>
+						Für den Sektempfang würden wir uns über Finger Food und Kuchen freuen, die man ohne Besteck essen kann.
+					</p>
+					<p>
+						Am Tag der Hochzeit bringt ihr das Essen ab besten direkt in den Hof des Gemeindehaus.
+					</p>
 					<CakeList firebasePath="church/cakes" isLoading={this.state.churchLoading || this.state.dessertLoading} setLoading={this.setChurchLoading} />
 
 					<Heading level={3}>Nachtisch</Heading>
+					<p>
+						Beim Nachtisch sind wir im Kasino, wodruch wir Besteck und Teller haben. Somit sind euren Kreationen keine Grenzen gesetzt.
+					</p>
 					<CakeList firebasePath="dessert/cakes" isLoading={this.state.churchLoading || this.state.dessertLoading} setLoading={this.setDessertLoading} />
 				</div>
 			</Container>
