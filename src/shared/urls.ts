@@ -7,11 +7,11 @@ export interface Route {
 
 export default {
 	home: {
-		displayName: 'Home',
+		displayName: 'Start',
 		url: '/home',
 	},
 	party: {
-		displayName: 'Party',
+		displayName: 'Hochzeitstag',
 		url: '/party',
 	},
 	response: {

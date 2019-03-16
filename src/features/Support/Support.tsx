@@ -33,7 +33,7 @@ class Support extends React.Component<Props, State> {
 				<div>
 					<Heading level={3}>Sektempfang</Heading>
 					<p>
-						Für den Sektempfang würden wir uns über Finger Food und Kuchen freuen, die man ohne Besteck essen kann.
+						Für den Sektempfang würden wir uns über Finger Food und Kuchen freuen, welches man ohne Besteck essen kann.
 					</p>
 					<p>
 						Am Tag der Hochzeit bringt ihr das Essen ab besten direkt in den Hof des Gemeindehaus.
