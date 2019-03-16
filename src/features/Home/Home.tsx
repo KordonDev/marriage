@@ -2,7 +2,6 @@ import * as React from 'react';
 import styled, { StyledComponentClass, css } from 'styled-components';
 import { responsiveStyle } from 'styled-system';
 
-import Button from '../../common/Button';
 import { Flex, Container } from 'rebass';
 import theme from '../../common/theme';
 import urls from '../../shared/urls';
@@ -24,16 +23,20 @@ class Home extends React.Component<Props, State> {
 						<Heading fontSize={[ '100px', '120px' ]}>Willkommen</Heading>
 					</Flex>
 					<p>
-						Wir trauen uns! Lisa & Arne werden am 99.99.2019 heiraten. Das ganze findet in der Musterstr 9 in Ettlingen statt.
-						Außerdem solltet ihr nicht vergessen euch zurück zu melden.
+						Schön das ihr es bis hier hin geschafft habt. Wir ihr sicher wisst, heiraten wir am 6.7. in der Ludwigskirche in Langensteinbach und feiern danach im Kasino in Ettlingen.
 					</p>
-					<Flex justify="center">
-						<Link href={urls.response.url}>
-							<Button>
-								Rückmeldung
-							</Button>
-						</Link>
-					</Flex>
+					<p>
+						Auf dieser Seite bekommt ihr unter <Link href={urls.party.url}>Party</Link> eine grobe Übersicht wie wir unseren Hochzeitstag geplant haben.
+					</p>
+					<p>
+						Damit wir besser mit euch planen können, sollt ihr euch unter <Link href={urls.response.url}>Rückmeldung</Link> zurückmelden. Ändern könnt ihr die Daten bis zum 6.6., also einen Monat vor der Hochzeit.
+					</p>
+					<p>
+						Da wir nicht alles selbst machen können, wäre es super wenn ihr uns <Link href={urls.support.url}>unterstützen</Link> könntet. Wir brauchen für den Sektempfang nach der Kirche Finger Food und Kuchen, sowie für den Nachtisch eure besten Nachtische.
+					</p>
+					<p>
+						Wir freuen euch unsere Hochzeit mit euch verbringen zu können und dazu jetzt schnell <Link href={urls.response.url}>zurückmelden</Link>!
+					</p>
 				</Container>
 			</div>
 		);
