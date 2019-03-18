@@ -37,7 +37,7 @@ class Login extends React.Component<Props, State> {
 		this.loginSubscription = isLoggedIn.subscribe((isLoggedIn) => {
 			this.setState({ isLoggedIn }, () => {
 				if (isLoggedIn) {
-					this.props.history.push(urls.home.url);
+					this.props.history.replace(urls.home.url);
 				} else {
 					if (LoginCodePattern.test(this.state.loginCode)) {
 						signIn(this.state.loginCode);
@@ -55,17 +55,14 @@ class Login extends React.Component<Props, State> {
 
 	render() {
 		return (
-			<div>
+			<Container>
+				<Flex column justify="center" align="center" wrap>
+					<Heading fontSize={[ '100px', '120px' ]}>Login</Heading>
+					{this.state.isLoggedIn && this.renderLogout()}
+					{!this.state.isLoggedIn && this.renderLogin()}
 
-				<Container>
-					<Flex column justify="center" align="center" wrap>
-						<Heading fontSize={[ '100px', '120px' ]}>Login</Heading>
-						{this.state.isLoggedIn && this.renderLogout()}
-						{!this.state.isLoggedIn && this.renderLogin()}
-
-					</Flex>
-				</Container>
-			</div>
+				</Flex>
+			</Container>
 		);
 	}
 
