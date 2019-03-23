@@ -10,6 +10,7 @@ import Response from '../Response';
 import Header from '../Header';
 import Impressum from '../Impressum';
 import Login from '../Login';
+import ReplaceToHome from '../ReplaceToHome';
 import appStyles from './App.styles';
 import urls from '../../shared/urls';
 import Support from '../Support';
@@ -47,7 +48,7 @@ class App extends React.Component<Props> {
 						<Route path={urls.support.url} component={Support} />
 						<Route path={urls.impressum.url} component={Impressum} />
 						<Route path={urls.login.rawUrl} component={Login} />
-						<Route component={Home} />
+						<Route component={ReplaceToHome} />
 					</Switch>
 				</Main>
 				<Footer>
