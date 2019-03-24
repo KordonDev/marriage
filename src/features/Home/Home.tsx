@@ -23,19 +23,19 @@ class Home extends React.Component<Props, State> {
 						<Heading fontSize={[ '100px', '120px' ]}>Willkommen</Heading>
 					</Flex>
 					<p>
-						Schön das ihr es bis hier hin geschafft habt. Wir ihr sicher wisst, heiraten wir am 6.7. in der Ludwigskirche in Langensteinbach und feiern danach im Kasino in Ettlingen.
+						Schön, dass ihr es bis hier hin geschafft habt. Wir ihr sicher wisst, heiraten wir am 6.7. in der Ludwigskirche in Langensteinbach und feiern danach im Kasino in Ettlingen.
 					</p>
 					<p>
-						Auf dieser Seite bekommt ihr unter <Link href={urls.party.url}>Party</Link> eine grobe Übersicht wie wir unseren Hochzeitstag geplant haben.
+						Auf dieser Seite bekommt ihr eine grobe Übersicht, wie wir unseren <Link href={urls.party.url}>Hochzeitstag</Link> geplant haben.
 					</p>
 					<p>
 						Damit wir besser mit euch planen können, sollt ihr euch unter <Link href={urls.response.url}>Rückmeldung</Link> zurückmelden. Ändern könnt ihr die Daten bis zum 6.6., also einen Monat vor der Hochzeit.
 					</p>
 					<p>
-						Da wir nicht alles selbst machen können, wäre es super wenn ihr uns <Link href={urls.support.url}>unterstützen</Link> könntet. Wir brauchen für den Sektempfang nach der Kirche Finger Food und Kuchen, sowie für den Nachtisch eure besten Nachtische.
+						Da wir nicht alles selbst machen können, wäre es super, wenn ihr uns <Link href={urls.support.url}>unterstützt</Link>. Wir brauchen für den Sektempfang nach der Kirche Finger Food und Kuchen, sowie für den Nachtisch eure besten Kreationen.
 					</p>
 					<p>
-						Wir freuen euch unsere Hochzeit mit euch verbringen zu können und dazu jetzt schnell <Link href={urls.response.url}>zurückmelden</Link>!
+						Wir freuen uns darauf unsere Hochzeit mit euch verbringen zu können und dazu jetzt schnell <Link href={urls.response.url}>zurückmelden</Link>!
 					</p>
 				</Container>
 			</div>

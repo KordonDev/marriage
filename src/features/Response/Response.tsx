@@ -63,6 +63,11 @@ class Response extends React.Component<Props, State> {
 				{this.state.isLoading && <LoadingSpinner />}
 				{!this.state.isLoading &&
 					<Box>
+						<Box ml={[ 0, 0 , '15px' ]}>
+							<p>
+								Bitte gebt bis zum 6.6. Rückmeldung, ob ihr kommt.
+							</p>
+						</Box>
 						<Form onSubmit={this.onSubmit}>
 							<div>
 								<FullWithFlex justify="space-between" wrap>

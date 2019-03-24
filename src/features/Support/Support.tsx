@@ -28,21 +28,24 @@ class Support extends React.Component<Props, State> {
 		return (
 			<Container>
 				<Heading mb={30} level={2}>Eure Beiträge</Heading>
+				<p>
+					Wir würden uns freuen, wenn ihr uns am Tag unserer Hochzeit etwas unterstützen könntet, indem ihr etwas zum Sektempfang oder dem Nachtisch beitragen könntet.
+				</p>
 
 				{(this.state.churchLoading || this.state.dessertLoading) && <LoadingSpinner />}
 				<div>
 					<Heading level={3}>Sektempfang</Heading>
 					<p>
-						Für den Sektempfang würden wir uns über Finger Food und Kuchen freuen, welches man ohne Besteck essen kann.
+						Für den Sektempfang würden wir uns über Finger Food freuen.
 					</p>
 					<p>
-						Am Tag der Hochzeit bringt ihr das Essen ab besten direkt in den Hof des Gemeindehaus.
+						Am Tag der Hochzeit bringt ihr das Essen am besten direkt in den Hof des Gemeindehaus.
 					</p>
 					<CakeList firebasePath="church/cakes" isLoading={this.state.churchLoading || this.state.dessertLoading} setLoading={this.setChurchLoading} />
 
 					<Heading level={3}>Nachtisch</Heading>
 					<p>
-						Beim Nachtisch sind wir im Kasino, wodruch wir Besteck und Teller haben. Somit sind euren Kreationen keine Grenzen gesetzt.
+						Den Nachtisch wird es im Kasino geben. Dort wird es auch Kühlmöglichkeiten geben.
 					</p>
 					<CakeList firebasePath="dessert/cakes" isLoading={this.state.churchLoading || this.state.dessertLoading} setLoading={this.setDessertLoading} />
 				</div>
