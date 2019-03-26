@@ -3,6 +3,7 @@ import { Heading, Container } from 'rebass';
 
 import CakeList from '../CakeList';
 import LoadingSpinner from '../../common/LoadingSpinner';
+import { PageHeading, SectionHeading } from '../../common/headlines';
 
 interface Props {}
 
@@ -27,14 +28,16 @@ class Support extends React.Component<Props, State> {
 	render() {
 		return (
 			<Container>
-				<Heading mb={30} level={2}>Eure Beiträge</Heading>
+				<PageHeading>
+					Eure Beiträge
+				</PageHeading>
 				<p>
 					Wir würden uns freuen, wenn ihr uns am Tag unserer Hochzeit etwas unterstützen könntet, indem ihr etwas zum Sektempfang oder dem Nachtisch beitragen könntet.
 				</p>
 
 				{(this.state.churchLoading || this.state.dessertLoading) && <LoadingSpinner />}
 				<div>
-					<Heading level={3}>Sektempfang</Heading>
+					<SectionHeading>Sektempfang</SectionHeading>
 					<p>
 						Für den Sektempfang würden wir uns über Finger Food freuen.
 					</p>
@@ -43,7 +46,7 @@ class Support extends React.Component<Props, State> {
 					</p>
 					<CakeList firebasePath="church/cakes" isLoading={this.state.churchLoading || this.state.dessertLoading} setLoading={this.setChurchLoading} />
 
-					<Heading level={3}>Nachtisch</Heading>
+					<SectionHeading>Nachtisch</SectionHeading>
 					<p>
 						Den Nachtisch wird es im Kasino geben. Dort wird es auch Kühlmöglichkeiten geben.
 					</p>

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Container, Flex, Box } from 'rebass';
 
 import GoogleMapsPreview from './GoogleMapsPreview/GoogleMapsPreview';
+import { PageHeading, SectionHeading, StructuralHeading } from '../../common/headlines';
 
 
 export interface Props {
@@ -13,8 +14,8 @@ class Party extends React.Component<Props> {
 	render() {
 		return (
 			<Container>
-				<Heading>Unser Tag</Heading>
-				<Heading>Trauung</Heading>
+				<PageHeading>Unser Tag</PageHeading>
+				<SectionHeading>Trauung</SectionHeading>
 				<FlexFullWith justify="center">
 					<Box width={[ 1, 1, 0.5 ]}>
 						<Image src={require('./kirche.jpg')} />
@@ -27,9 +28,9 @@ class Party extends React.Component<Props> {
 					Im Anschluss seid ihr alle zum Sektempfang im Hof des Gemeindehaus eingeladen.
 				</p>
 
-				<Heading3>
+				<StructuralHeading>
 					Anfahrt zur Evangelische Kirche Langensteinbach
-				</Heading3>
+				</StructuralHeading>
 				<p>
 					Parken könnt ihr am besten an der Weinbrennerstraße oder hinter der Zentralapotheke.
 				</p>
@@ -37,7 +38,7 @@ class Party extends React.Component<Props> {
 				<GoogleMapsPreview src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10487.97400280363!2d8.498203273014903!3d48.91551607827654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47970e76e139189b%3A0xd1373584be37d6f7!2sWeinbrennerkirche+Langensteinbach!5e0!3m2!1sde!2sde!4v1543523784047" />
 
 
-				<Heading>Feier</Heading>
+				<SectionHeading>Feier</SectionHeading>
 				<FlexFullWith justify="center">
 					<Box width={[ 1, 1, 0.8 ]}>
 						<Image src={require('./kasino.jpg')} />
@@ -50,7 +51,7 @@ class Party extends React.Component<Props> {
 					Mehr Informationen zum Kasion könnt ihr euch <a href="https://www.ettlingen.de/,Lde/startseite/Wirtschaft+_+Verkehr/kasino.html">hier</a> ansehen.
 				</p>
 
-				<Heading3>Anfahrt</Heading3>
+				<StructuralHeading>Anfahrt</StructuralHeading>
 				<p>
 					Parkplätze gibt es auf dem Gelände des Kasino.
 				</p>
@@ -59,30 +60,6 @@ class Party extends React.Component<Props> {
 		);
 	}
 }
-
-const Heading = styled.h1`
-	font-family: 'Mr De Haviland', 'cursive';
-	font-size: 60px;
-	font-weight: 300;
-	margin-top: 24px;
-	margin-bottom: 24px;
-`;
-
-/*const Heading2 = styled.h2`
-	font-family: 'Mr De Haviland', 'cursive';
-	font-size: 50px;
-	font-weight: 300;
-	margin-top: 18px;
-	margin-bottom: 18px;
-`;
-*/
-const Heading3 = styled.h3`
-	font-family: 'Mr De Haviland', 'cursive';
-	font-size: 32px;
-	font-weight: 300;
-	margin-top: 12px;
-	margin-bottom: 12px;
-`;
 
 const FlexFullWith = styled(Flex)`
 	width: 100%;
