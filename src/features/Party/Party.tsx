@@ -16,7 +16,7 @@ class Party extends React.Component<Props> {
 				<Heading>Unser Tag</Heading>
 				<Heading>Trauung</Heading>
 				<FlexFullWith justify="center">
-					<Box width={[ 1, 1, 0.8 ]}>
+					<Box width={[ 1, 1, 0.5 ]}>
 						<Image src={require('./kirche.jpg')} />
 					</Box>
 				</FlexFullWith>
