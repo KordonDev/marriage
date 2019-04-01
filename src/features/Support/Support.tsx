@@ -31,12 +31,12 @@ class Support extends React.Component<Props, State> {
 				<PageHeading>
 					Eure Beiträge
 				</PageHeading>
-				<p>
+				<p hidden={this.state.churchLoading || this.state.dessertLoading}>
 					Wir würden uns freuen, wenn ihr uns am Tag unserer Hochzeit etwas unterstützen könntet, indem ihr etwas zum Sektempfang oder dem Nachtisch beitragen könntet.
 				</p>
 
 				{(this.state.churchLoading || this.state.dessertLoading) && <LoadingSpinner />}
-				<div>
+				<div hidden={this.state.churchLoading || this.state.dessertLoading}>
 					<SectionHeading>Sektempfang</SectionHeading>
 					<p>
 						Für den Sektempfang würden wir uns über Finger Food freuen.
@@ -44,14 +44,16 @@ class Support extends React.Component<Props, State> {
 					<p>
 						Am Tag der Hochzeit bringt ihr das Essen am besten direkt in den Hof des Gemeindehaus.
 					</p>
-					<CakeList firebasePath="church/cakes" isLoading={this.state.churchLoading || this.state.dessertLoading} setLoading={this.setChurchLoading} />
+				</div>
+				<CakeList firebasePath="church/cakes" isLoading={this.state.churchLoading || this.state.dessertLoading} setLoading={this.setChurchLoading} />
 
+				<div hidden={this.state.churchLoading || this.state.dessertLoading}>
 					<SectionHeading>Nachtisch</SectionHeading>
 					<p>
 						Den Nachtisch wird es im Kasino geben. Dort wird es auch Kühlmöglichkeiten geben.
 					</p>
-					<CakeList firebasePath="dessert/cakes" isLoading={this.state.churchLoading || this.state.dessertLoading} setLoading={this.setDessertLoading} />
 				</div>
+				<CakeList firebasePath="dessert/cakes" isLoading={this.state.churchLoading || this.state.dessertLoading} setLoading={this.setDessertLoading} />
 			</Container>
 		);
 	}
