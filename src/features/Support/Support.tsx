@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Heading, Container } from 'rebass';
+import { Container } from 'rebass';
 
 import CakeList from '../CakeList';
 import LoadingSpinner from '../../common/LoadingSpinner';
