@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Heading, Box, Flex, Container } from 'rebass';
+import { Box, Flex, Container } from 'rebass';
 import { connect } from 'react-firebase';
 import styled from 'styled-components';
 
@@ -13,6 +13,7 @@ import GroupResponse from './GroupResponse';
 import LoadingSpinner from '../../common/LoadingSpinner';
 import { ResponseServerResponse, Person, adjustPersonFromServer } from './Response.types';
 import Icon from '../../common/Icon';
+import { PageHeading } from '../../common/headlines';
 
 interface State {
 	persons: Person[];
@@ -58,7 +59,9 @@ class Response extends React.Component<Props, State> {
 		return (
 			<Container>
 				<Box ml={[ 0, 0 , '15px' ]}>
-					<Heading level={2}>Rückmeldung</Heading>
+					<PageHeading>
+						Rückmeldung
+					</PageHeading>
 				</Box>
 				{this.state.isLoading && <LoadingSpinner />}
 				{!this.state.isLoading &&

@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { Flex } from 'rebass';
+import { Flex, Box } from 'rebass';
 import styled from 'styled-components';
 
 import { Person, Food, Participate } from '../Response.types';
 import Input from '../../../common/Input';
 import Switch from '../../../common/Switch';
 import Card from '../../../common/Card';
-import { H2 } from '../../../common/headlines';
+import { SectionHeading } from '../../../common/headlines';
 
 interface State {}
 
@@ -47,7 +47,11 @@ class ResponsePerson extends React.Component<Props, State> {
 			<Card>
 				<div>
 					<FlexFullWidth justify="center">
-						<H2>{this.props.person.name}</H2>
+						<Box my="9px">
+							<SectionHeading decorated>
+								{this.props.person.name}
+							</SectionHeading>
+						</Box>
 					</FlexFullWidth>
 
 					<Question>Ich nehme Teil?</Question>

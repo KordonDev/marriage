@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { Heading, Container } from 'rebass';
+import { Container } from 'rebass';
 
 import CakeList from '../CakeList';
 import LoadingSpinner from '../../common/LoadingSpinner';
+import { PageHeading, SectionHeading } from '../../common/headlines';
 
 interface Props {}
 
@@ -27,28 +28,32 @@ class Support extends React.Component<Props, State> {
 	render() {
 		return (
 			<Container>
-				<Heading mb={30} level={2}>Eure Beiträge</Heading>
-				<p>
+				<PageHeading>
+					Eure Beiträge
+				</PageHeading>
+				<p hidden={this.state.churchLoading || this.state.dessertLoading}>
 					Wir würden uns freuen, wenn ihr uns am Tag unserer Hochzeit etwas unterstützen könntet, indem ihr etwas zum Sektempfang oder dem Nachtisch beitragen könntet.
 				</p>
 
 				{(this.state.churchLoading || this.state.dessertLoading) && <LoadingSpinner />}
-				<div>
-					<Heading level={3}>Sektempfang</Heading>
+				<div hidden={this.state.churchLoading || this.state.dessertLoading}>
+					<SectionHeading>Sektempfang</SectionHeading>
 					<p>
 						Für den Sektempfang würden wir uns über Finger Food freuen.
 					</p>
 					<p>
 						Am Tag der Hochzeit bringt ihr das Essen am besten direkt in den Hof des Gemeindehaus.
 					</p>
-					<CakeList firebasePath="church/cakes" isLoading={this.state.churchLoading || this.state.dessertLoading} setLoading={this.setChurchLoading} />
+				</div>
+				<CakeList firebasePath="church/cakes" isLoading={this.state.churchLoading || this.state.dessertLoading} setLoading={this.setChurchLoading} />
 
-					<Heading level={3}>Nachtisch</Heading>
+				<div hidden={this.state.churchLoading || this.state.dessertLoading}>
+					<SectionHeading>Nachtisch</SectionHeading>
 					<p>
 						Den Nachtisch wird es im Kasino geben. Dort wird es auch Kühlmöglichkeiten geben.
 					</p>
-					<CakeList firebasePath="dessert/cakes" isLoading={this.state.churchLoading || this.state.dessertLoading} setLoading={this.setDessertLoading} />
 				</div>
+				<CakeList firebasePath="dessert/cakes" isLoading={this.state.churchLoading || this.state.dessertLoading} setLoading={this.setDessertLoading} />
 			</Container>
 		);
 	}

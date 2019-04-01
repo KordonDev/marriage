@@ -1,6 +1,7 @@
-import { H1, H2 } from './Headlines';
+import { PageHeading, SectionHeading, StructuralHeading } from './Headlines';
 
 export {
-	H1,
-	H2,
+	PageHeading,
+	SectionHeading,
+	StructuralHeading
 };
