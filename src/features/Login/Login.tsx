@@ -75,7 +75,7 @@ class Login extends React.Component<Props, State> {
 				<FlexFullWidth justify="flex-end">
 					<Button type="submit" onClick={this.handleSignInClick}>Login</Button>
 				</FlexFullWidth>
-				{this.state.error && <p>Dein login hat leider nicht funktioniert, probiere es mit dem Code von der Einladung nocheinmal aus.</p>}
+				{this.state.error && <p>Dein Login hat leider nicht funktioniert, probiere es mit dem Code von der Einladung nocheinmal.</p>}
 			</form>
 		</Box>
 	)

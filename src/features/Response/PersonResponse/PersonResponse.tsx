@@ -48,7 +48,7 @@ class ResponsePerson extends React.Component<Props, State> {
 				<div>
 					<FlexFullWidth justify="center">
 						<Box my="9px">
-							<SectionHeading>
+							<SectionHeading decorated>
 								{this.props.person.name}
 							</SectionHeading>
 						</Box>
