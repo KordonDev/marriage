@@ -88,7 +88,7 @@ class CakeList extends React.Component<Props, State> {
 						<thead>
 							<tr>
 								<TableHead>Name</TableHead>
-								<TableHead>Kuchen</TableHead>
+								<TableHead>Essen</TableHead>
 								<TableHead/>
 							</tr>
 						</thead>
@@ -105,7 +105,7 @@ class CakeList extends React.Component<Props, State> {
 										Name:
 									</LabelTabel>
 									<LabelTabel htmlFor="name">
-										Kuchen:
+										Essen:
 									</LabelTabel>
 								</TableDataLabel>
 								<TableDataInput>
