@@ -54,7 +54,7 @@ class ResponsePerson extends React.Component<Props, State> {
 						</Box>
 					</FlexFullWidth>
 
-					<Question>Ich nehme Teil?</Question>
+					<Question>Ich nehme teil?</Question>
 					<Switch name={`participate-${this.props.person.key}`} options={[ Participate.Yes, Participate.No ]} selected={this.props.person.participate} onChange={this.handleParticipation} key={this.props.person.key + 'participate'} disabled={this.props.responded}/>
 
 					<Question>Du isst?</Question>
