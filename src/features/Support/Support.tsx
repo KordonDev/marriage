@@ -39,7 +39,7 @@ class Support extends React.Component<Props, State> {
 				<div hidden={this.state.churchLoading || this.state.dessertLoading}>
 					<SectionHeading>Sektempfang</SectionHeading>
 					<p>
-						Für den Sektempfang würden wir uns über Finger Food freuen.
+						Für den Sektempfang würden wir uns über Fingerfood freuen.
 					</p>
 					<p>
 						Am Tag der Hochzeit bringt ihr das Essen am besten direkt in den Hof des Gemeindehaus.
