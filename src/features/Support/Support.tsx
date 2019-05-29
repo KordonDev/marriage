@@ -53,7 +53,7 @@ class Support extends React.Component<Props, State> {
 						Den Nachtisch wird es im Kasino geben. Dort wird es auch Kühlmöglichkeiten geben.
 					</p>
 				</div>
-				<CakeList firebasePath="dessert/cakes" isLoading={this.state.churchLoading || this.state.dessertLoading} setLoading={this.setDessertLoading} />
+				<CakeList firebasePath="dessert/cakes" isLoading={this.state.churchLoading || this.state.dessertLoading} setLoading={this.setDessertLoading} stopAdding />
 			</Container>
 		);
 	}
