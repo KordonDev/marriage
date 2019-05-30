@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import Label from '../Label';
 
@@ -20,6 +20,9 @@ export const TableHead = styled.th`
 	padding: 12px 25px;
 	background-color: #363636;
 	color: white;
+	${(props: { width?: string }) => props.width ? css`
+		width: ${props.width};
+	` : ''};
 `;
 
 export const TableData = styled.td`
