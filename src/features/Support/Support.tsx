@@ -34,6 +34,9 @@ class Support extends React.Component<Props, State> {
 				<p hidden={this.state.churchLoading || this.state.dessertLoading}>
 					Wir würden uns freuen, wenn ihr uns am Tag unserer Hochzeit etwas unterstützen könntet, indem ihr etwas zum Sektempfang oder dem Nachtisch beitragen könntet.
 				</p>
+				<p>
+					Bitte denkt auch daran, eure Behälter mit eurem Namen zu beschriften, damit ihr sie zurückbekommt.
+				</p>
 
 				{(this.state.churchLoading || this.state.dessertLoading) && <LoadingSpinner />}
 				<div hidden={this.state.churchLoading || this.state.dessertLoading}>
