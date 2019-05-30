@@ -95,20 +95,7 @@ class Response extends React.Component<Props, State> {
 
 	getSubmit = (responded: boolean) => {
 		return (
-			<FullWithFlex justify="space-between">
-				{responded ? (
-					<GhostButton>
-						<Flex align="center">
-							<Box mr="6px">
-								Anpassen
-							</Box>
-							<Icon name="edit" alt="Formular ändern icon" />
-						</Flex>
-					</GhostButton>
-				) : (
-					<div />
-				)}
-
+			<FullWithFlex justify="flex-end">
 				{responded ? (
 					<Flex align="center">
 						<Box mr="6px">

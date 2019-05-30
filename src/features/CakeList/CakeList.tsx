@@ -18,6 +18,7 @@ interface State {
 
 interface ExternalProps {
 	firebasePath: string;
+	stopAdding?: boolean;
 	isLoading: boolean;
 	setLoading: (isLoading: boolean) => void;
 }
@@ -26,7 +27,7 @@ interface FirebaseInjectedProps {
 	removeCake: (key: string) => any;
 	addCake: (cake: CakeServerResponse) => any;
 }
-interface Props extends ExternalProps, FirebaseInjectedProps, InjectedCurrentUserProps {}
+interface Props extends ExternalProps, FirebaseInjectedProps, InjectedCurrentUserProps { }
 
 
 class CakeList extends React.Component<Props, State> {
@@ -66,7 +67,9 @@ class CakeList extends React.Component<Props, State> {
 
 	handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		this.addCake();
+		if (!this.props.stopAdding) {
+			this.addCake();
+		}
 	}
 
 	renderCake = (cake: Cake) => (
@@ -88,18 +91,18 @@ class CakeList extends React.Component<Props, State> {
 						<thead>
 							<tr>
 								<TableHead>Name</TableHead>
-								<TableHead>Essen</TableHead>
+								<TableHead width="100%">Essen</TableHead>
 								<TableHead/>
 							</tr>
 						</thead>
 						<tbody>
 							{cakeServerResponseToCake(this.props.cakes).map(this.renderCakeRow)}
-							<tr>
+							<tr hidden={this.props.stopAdding}>
 								<TableData/>
 								<TableData/>
 								<TableData/>
 							</tr>
-							<tr>
+							<tr hidden={this.props.stopAdding}>
 								<TableDataLabel>
 									<LabelTabel htmlFor="name">
 										Name:
