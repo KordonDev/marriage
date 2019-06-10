@@ -5,7 +5,7 @@ import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-firebase';
 import { Provider as ThemeProvider } from 'rebass';
 import { Router } from 'react-router';
-import createBrowserHistory from 'history/createBrowserHistory';
+import { createBrowserHistory } from 'history';
 
 import { firebaseApp } from './services/firebase';
 
