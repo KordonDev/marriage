@@ -4,7 +4,7 @@ import { connect } from 'react-firebase';
 import styled from 'styled-components';
 
 import theme from '../../common/theme';
-import Button, { GhostButton } from '../../common/Button';
+import Button from '../../common/Button';
 import Form from '../../common/Form';
 import { App } from '../../services/firebase';
 import addCurrentUser, { InjectedCurrentUserProps } from '../../hocs/addCurrentUser';
