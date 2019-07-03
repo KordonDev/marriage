@@ -37,6 +37,9 @@ class Support extends React.Component<Props, State> {
 				<p>
 					Bitte denkt auch daran, eure Behälter mit eurem Namen zu beschriften, damit ihr sie zurückbekommt.
 				</p>
+				<p>
+					Das Essen kann ab 13:30 Uhr am Gemeindehaus abgegeben werden. Dort kann es auch gekühlt werden.
+				</p>
 
 				{(this.state.churchLoading || this.state.dessertLoading) && <LoadingSpinner />}
 				<div hidden={this.state.churchLoading || this.state.dessertLoading}>

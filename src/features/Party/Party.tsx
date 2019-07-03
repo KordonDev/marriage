@@ -45,7 +45,10 @@ class Party extends React.Component<Props> {
 					</Box>
 				</FlexFullWith>
 				<p>
-					Geplant ist, dass wir gegen 17:30 Uhr am Kasino in Ettlingen ankommen, damit wir ungefähr um 18:00 Uhr essen können.
+					Geplant ist, dass wir gegen 17:30 Uhr am Kasino in Ettlingen ankommen.
+				</p>
+				<p>
+					Um 17:40 wollen wir dann noch beim Kasino Gruppenbilder machen.
 				</p>
 				<p>
 					Mehr Informationen zum Kasion könnt ihr euch <a href="https://www.ettlingen.de/,Lde/startseite/Wirtschaft+_+Verkehr/kasino.html">hier</a> ansehen.
