@@ -37,9 +37,6 @@ class Support extends React.Component<Props, State> {
 				<p>
 					Bitte denkt auch daran, eure Behälter mit eurem Namen zu beschriften, damit ihr sie zurückbekommt.
 				</p>
-				<p>
-					Das Essen kann ab 13:30 Uhr am Gemeindehaus abgegeben werden. Dort kann es auch gekühlt werden.
-				</p>
 
 				{(this.state.churchLoading || this.state.dessertLoading) && <LoadingSpinner />}
 				<div hidden={this.state.churchLoading || this.state.dessertLoading}>
@@ -48,7 +45,7 @@ class Support extends React.Component<Props, State> {
 						Für den Sektempfang würden wir uns über Fingerfood freuen.
 					</p>
 					<p>
-						Am Tag der Hochzeit bringt ihr das Essen am besten direkt in den Hof des Gemeindehaus.
+						Am Tag der Hochzeit könnt ihr das Essen ab 13:30 Uhr in den Hof des Gemeindehaus bringen. Dort kann es dann auch gekühlt werden.
 					</p>
 				</div>
 				<CakeList firebasePath="church/cakes" isLoading={this.state.churchLoading || this.state.dessertLoading} setLoading={this.setChurchLoading} />
